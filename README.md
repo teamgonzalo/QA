@@ -17,6 +17,6 @@ API endpoints and database for retail application's questions and answers sectio
 ### Usage
 
 ### Contributors
-* Thomas Rose(https://github.com/ZloNAGit)
-* Jonathan Forcherio(https://github.com/jlforcherio1)
-* Manny Ledoux(https://github.com/Leftyxiv)
+* [Thomas Rose](https://github.com/ZloNAGit)
+* [Jonathan Forcherio](https://github.com/jlforcherio1)
+* [Manny Ledoux](https://github.com/Leftyxiv)
