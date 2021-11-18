@@ -1,22 +1,19 @@
-var express = require('express');
-var db = require('../database/index.js');
-var app = express();
+const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
 
+const router = require('./routes/routes.js');
+
+const app = express();
+
+app.use(morgan('dev'));
+app.use(cors());
 app.use(express.json());
 
-let PORT = 3000;
+app.use('/qa', router);
 
-app.get('/qa/questions', (req, res) => {
-  db.questions.findAll({limit: 10})
-    .then(data => {
-      console.log('Hello There!');
-      res.send(data);
-    })
-    .catch(err => {
-      console.log('Questions get error: ', err);
-    })
-})
+const PORT = 3000;
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
-})
+});
