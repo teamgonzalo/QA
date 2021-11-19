@@ -1,4 +1,4 @@
-const { db, DataTypes } = require('../database');
+const { db, DataTypes } = require('../database/index.js');
 
 const Questions = db.define('questions', {
   id: {
@@ -34,4 +34,8 @@ const Questions = db.define('questions', {
   }
 });
 
-module.exports.Questions = Questions;
+module.exports = {
+  getQuestions: () => {
+    return Questions.findAll({limit: 3});
+  }
+}
