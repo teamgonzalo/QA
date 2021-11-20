@@ -63,5 +63,18 @@ module.exports = {
       offset: count * (page - 1),
       limit: count
     })
+  },
+
+  addAnswers: (question_id, body, name, email, date, photos) => {
+    return Answers.create({
+      question_id: question_id,
+      body: body,
+      answerer_name: name,
+      answerer_email: email,
+      date_written: date,
+      photos: photos,
+      reported: 0,
+      helpful: 0
+    })
   }
 };

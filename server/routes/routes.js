@@ -5,7 +5,7 @@ const controller = require('../../controllers')
 router.get('/questions', controller.questions.get);
 router.post('/questions', controller.questions.post);
 router.get('/questions/:question_id/answers', controller.answers.get);
-router.post('/questions/:question_id/answers', );
+router.post('/questions/:question_id/answers', controller.answers.post);
 router.put('/questions/:question_id/helpful', );
 router.put('/questions/:question_id/report', );
 router.put('/answers/:answer_id/helpful', );

@@ -17,5 +17,16 @@ module.exports = {
       .catch(err => {
         console.log('Get Answers Error: ', err);
       })
+  },
+
+  post: (req, res) => {
+    let date = new Date().getTime();
+    models.answers.addAnswers(req.params.question_id, req.body.body, req.body.name, req.body.email, date, req.body.photos)
+      .then(() => {
+        res.status(201).send('Answers submitted.');
+      })
+      .catch(err => {
+        console.log('Answer posting error: ', err);
+      })
   }
 };
