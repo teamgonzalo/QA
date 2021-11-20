@@ -20,7 +20,7 @@ const Photos = db.define('photos', {
     type: DataTypes.TEXT,
     allowNull: false
   }
-}, {underscored: true});
+}, {underscored: true, timestamps: false});
 
 Photos.associate = (models) => {
   Photos.belongsTo(models.questions, {

@@ -3,7 +3,7 @@ const controller = require('../../controllers')
 
 // Pass controller functions in as they are built
 router.get('/questions', controller.questions.get);
-router.post('/questions', );
+router.post('/questions', controller.questions.post);
 router.get('/questions/:question_id/answers', controller.answers.get);
 router.post('/questions/:question_id/answers', );
 router.put('/questions/:question_id/helpful', );

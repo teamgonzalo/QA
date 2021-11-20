@@ -1,7 +1,6 @@
 const models = require('../models');
 
 module.exports = {
-  // Still needs nested answers object
   get: (req, res) => {
     let page = req.body.page || 1;
     let count = req.body.count || 5;
@@ -20,7 +19,9 @@ module.exports = {
   },
 
   post: (req, res) => {
-    models.questions.addQuestion(req.body.product_id)
+    // Create new date and convert to UNIX formatting
+    let date = new Date().getTime();
+    models.questions.addQuestion(req.body.product_id, req.body.body, req.body.name, req.body.email, date)
       .then(() => {
         res.status(201).send('Question submitted.');
       })
@@ -29,8 +30,3 @@ module.exports = {
       })
   }
 }
-
-// body	text	Text of question being asked
-// name	text	Username for question asker
-// email	text	Email address for question asker
-// product_id	integer	Required ID of the Product for which the question is posted

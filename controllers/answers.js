@@ -1,7 +1,6 @@
 const models = require('../models');
 
 module.exports = {
-  // Still needs nested photos array
   get: (req, res) => {
     let page = req.body.page || 1;
     let count = req.body.count || 5;

@@ -37,7 +37,7 @@ const Answers = db.define('answers', {
   helpful: {
     type: DataTypes.INTEGER
   }
-}, {underscored: true});
+}, {underscored: true, timestamps: false});
 
 Answers.associate = (models) => {
   Answers.belongsTo(models.questions, {

@@ -24,7 +24,7 @@ const Questions = db.define('questions', {
     type: DataTypes.STRING(50),
     allowNull: false
   },
-  asker_name: {
+  asker_email: {
     type: DataTypes.STRING(50)
   },
   reported: {
@@ -33,7 +33,7 @@ const Questions = db.define('questions', {
   helpful: {
     type: DataTypes.INTEGER
   }
-}, {underscored: true});
+}, {underscored: true, timestamps: false});
 
 Questions.associate = (models) => {
   Questions.hasMany(models.answers)
@@ -60,7 +60,13 @@ module.exports = {
   },
   addQuestion: (product_id, body, name, email, date) => {
     return Questions.create({
-
+      product_id: product_id,
+      body: body,
+      asker_name: name,
+      asker_email: email,
+      date_written: date,
+      reported: 0,
+      helpful: 0
     })
   }
 }
