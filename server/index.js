@@ -1,3 +1,4 @@
+const { db } = require('../database');
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
@@ -14,6 +15,8 @@ app.use('/qa', router);
 
 const PORT = 3000;
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+db.sync().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
+  });
 });

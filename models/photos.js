@@ -1,5 +1,5 @@
 const { db, DataTypes } = require('../database');
-const answers = require('./answers.js');
+const models = require('./index.js');
 
 const Photos = db.define('photos', {
   id: {

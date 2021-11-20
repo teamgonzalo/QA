@@ -1,5 +1,5 @@
 const { db, DataTypes } = require('../database');
-const questions = require('./questions.js');
+const models = require('./index.js');
 
 const Answers = db.define('answers', {
   id: {
@@ -39,4 +39,10 @@ const Answers = db.define('answers', {
   }
 });
 
-module.exports.Answers = Answers;
+// Answers.associate = (models) => {
+//   Answers.belongTo(models.questions, {
+//     foreignKey: 'id'
+//   })
+// }
+
+module.exports = Answers;

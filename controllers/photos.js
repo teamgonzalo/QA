@@ -1,4 +1,4 @@
-const Photos = require('../models/photos.js');
+const models = require('../models');
 
 module.exports = {
 

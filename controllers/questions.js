@@ -1,14 +1,21 @@
-const Questions = require('../models/questions.js');
+const models = require('../models');
 
 module.exports = {
+  // Still needs nested answers object
   get: (req, res) => {
-    Questions.getQuestions()
+    let page = req.body.page || 1;
+    let count = req.body.count || 5;
+    models.questions.getQuestions(page, count, req.body.product_id)
       .then(data => {
-        console.log('Questions Data: ', data);
-        res.send(data);
+        let response = {
+          product_id: req.body.product_id,
+          results: data
+        }
+        res.send(response);
       })
       .catch(err => {
-        console.log('Questions Error: ', err);
+        console.log('Err: ', err);
+        res.sendStatus(404)
       })
   },
 

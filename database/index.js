@@ -11,7 +11,8 @@ const db = new Sequelize('sdc', info.username, info.password, {
         exclude: ['createdAt', 'updatedAt']
       }
     }
-  }
+  },
+  logging: false
 });
 
 module.exports = {

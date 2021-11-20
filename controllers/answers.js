@@ -1,4 +1,4 @@
-const Answers = require('../models/answers.js');
+const models = require('../models');
 
 module.exports = {
 

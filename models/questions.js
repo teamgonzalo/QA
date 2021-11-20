@@ -1,4 +1,5 @@
 const { db, DataTypes } = require('../database/index.js');
+const models = require('./index.js');
 
 const Questions = db.define('questions', {
   id: {
@@ -34,8 +35,44 @@ const Questions = db.define('questions', {
   }
 });
 
+// Questions.associate = (models) => {
+//   Questions.hasMany(models.answers, {
+//     foreignKey: 'id'
+//   })
+// }
+
 module.exports = {
-  getQuestions: () => {
-    return Questions.findAll({limit: 3});
+  getQuestions: (page, count, product_id) => {
+    return Questions.findAll({
+      attributes: {
+        exclude: ['product_id']
+      },
+      where: {
+        product_id: product_id,
+        reported: 0
+      },
+      offset: count * (page - 1),
+      limit: count
+    })
   }
 }
+
+// module.exports = {
+//   getQuestions: (page, count, product_id) => {
+//     return Questions.findAll({
+//       attributes: {
+//         exclude: ['product_id']
+//       },
+//       include: [{
+//         model: 'models.answers',
+//         required: true
+//       }],
+//       where: {
+//         product_id: product_id,
+//         reported: 0
+//       },
+//       offset: count * (page - 1),
+//       limit: count
+//     })
+//   }
+// }
