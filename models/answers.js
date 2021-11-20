@@ -45,4 +45,18 @@ const Answers = db.define('answers', {
 //   })
 // }
 
-module.exports = Answers;
+module.exports = {
+  getAnswers: (question_id, page, count) => {
+    return Answers.findAll({
+      attributes: {
+        exclude: ['question_id', 'reported', 'answerer_email']
+      },
+      where: {
+        question_id: question_id,
+        reported: 0
+      },
+      offset: count * (page - 1),
+      limit: count
+    })
+  }
+};

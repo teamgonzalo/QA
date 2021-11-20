@@ -5,7 +5,7 @@ module.exports = {
   get: (req, res) => {
     let page = req.body.page || 1;
     let count = req.body.count || 5;
-    models.questions.getQuestions(page, count, req.body.product_id)
+    models.questions.getQuestions(req.body.product_id, page, count)
       .then(data => {
         let response = {
           product_id: req.body.product_id,

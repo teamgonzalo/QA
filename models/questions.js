@@ -42,7 +42,7 @@ const Questions = db.define('questions', {
 // }
 
 module.exports = {
-  getQuestions: (page, count, product_id) => {
+  getQuestions: (product_id, page, count) => {
     return Questions.findAll({
       attributes: {
         exclude: ['product_id']
