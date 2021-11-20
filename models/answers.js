@@ -42,7 +42,8 @@ const Answers = db.define('answers', {
 Answers.associate = (models) => {
   Answers.belongsTo(models.questions, {
     foreignKey: 'question_id',
-  })
+  }),
+  Answers.hasMany(models.photos)
 }
 
 module.exports = {
@@ -50,12 +51,15 @@ module.exports = {
   getAnswers: (question_id, page, count) => {
     return Answers.findAll({
       attributes: {
-        exclude: ['question_id', 'reported', 'answerer_email']
+        exclude: ['question_id', 'reported', 'answerer_email', 'questionId']
       },
       where: {
         question_id: question_id,
         reported: 0
       },
+      include: [{
+        model: models.photos.Photos
+      }],
       offset: count * (page - 1),
       limit: count
     })

@@ -39,7 +39,6 @@ Questions.associate = (models) => {
   Questions.hasMany(models.answers)
 }
 
-
 module.exports = {
   Questions: Questions,
   getQuestions: (product_id, page, count) => {
@@ -49,7 +48,7 @@ module.exports = {
       },
       include: [{
         model: models.answers.Answers,
-        required: true
+        include:[models.photos.Photos]
       }],
       where: {
         product_id: product_id,
@@ -65,20 +64,3 @@ module.exports = {
     })
   }
 }
-
-// module.exports = {
-//   getQuestions: (page, count, product_id) => {
-//     return Questions.findAll({
-//       attributes: {
-//         exclude: ['product_id']
-//       },
-
-//       where: {
-//         product_id: product_id,
-//         reported: 0
-//       },
-//       offset: count * (page - 1),
-//       limit: count
-//     })
-//   }
-// }

@@ -20,6 +20,14 @@ const Photos = db.define('photos', {
     type: DataTypes.TEXT,
     allowNull: false
   }
-});
+}, {underscored: true});
 
-module.exports.Photos = Photos;
+Photos.associate = (models) => {
+  Photos.belongsTo(models.questions, {
+    foreignKey: 'answer_id',
+  })
+}
+
+module.exports = {
+  Photos: Photos,
+}

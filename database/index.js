@@ -8,7 +8,7 @@ const db = new Sequelize('sdc', info.username, info.password, {
   define: {
     defaultScope: {
       attributes: {
-        exclude: ['createdAt', 'updatedAt']
+        exclude: ['createdAt', 'updatedAt', 'created_at', 'updated_at']
       }
     }
   },

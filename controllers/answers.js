@@ -9,7 +9,7 @@ module.exports = {
       .then(data => {
         let response = {
           question: req.params.question_id,
-          page: page,
+          page: page - 1,
           count: count,
           result: data
         };

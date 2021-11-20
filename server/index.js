@@ -18,7 +18,6 @@ const PORT = 3000;
 db.sync().then(() => {
   Object.keys(db.models).forEach(key => {
     if ('associate' in db.models[key]) {
-      console.log('Key: ', key);
       db.models[key].associate(db.models);
     }
   });
