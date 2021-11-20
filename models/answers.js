@@ -37,15 +37,16 @@ const Answers = db.define('answers', {
   helpful: {
     type: DataTypes.INTEGER
   }
-});
+}, {underscored: true});
 
-// Answers.associate = (models) => {
-//   Answers.belongTo(models.questions, {
-//     foreignKey: 'id'
-//   })
-// }
+Answers.associate = (models) => {
+  Answers.belongsTo(models.questions, {
+    foreignKey: 'question_id',
+  })
+}
 
 module.exports = {
+  Answers: Answers,
   getAnswers: (question_id, page, count) => {
     return Answers.findAll({
       attributes: {

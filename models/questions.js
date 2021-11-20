@@ -33,26 +33,35 @@ const Questions = db.define('questions', {
   helpful: {
     type: DataTypes.INTEGER
   }
-});
+}, {underscored: true});
 
-// Questions.associate = (models) => {
-//   Questions.hasMany(models.answers, {
-//     foreignKey: 'id'
-//   })
-// }
+Questions.associate = (models) => {
+  Questions.hasMany(models.answers)
+}
+
 
 module.exports = {
+  Questions: Questions,
   getQuestions: (product_id, page, count) => {
     return Questions.findAll({
       attributes: {
         exclude: ['product_id']
       },
+      include: [{
+        model: models.answers.Answers,
+        required: true
+      }],
       where: {
         product_id: product_id,
         reported: 0
       },
       offset: count * (page - 1),
       limit: count
+    })
+  },
+  addQuestion: (product_id, body, name, email, date) => {
+    return Questions.create({
+
     })
   }
 }
@@ -63,10 +72,7 @@ module.exports = {
 //       attributes: {
 //         exclude: ['product_id']
 //       },
-//       include: [{
-//         model: 'models.answers',
-//         required: true
-//       }],
+
 //       where: {
 //         product_id: product_id,
 //         reported: 0

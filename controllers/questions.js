@@ -20,6 +20,17 @@ module.exports = {
   },
 
   post: (req, res) => {
-
+    models.questions.addQuestion(req.body.product_id)
+      .then(() => {
+        res.status(201).send('Question submitted.');
+      })
+      .catch(err => {
+        console.log('Question posting error: ', err);
+      })
   }
 }
+
+// body	text	Text of question being asked
+// name	text	Username for question asker
+// email	text	Email address for question asker
+// product_id	integer	Required ID of the Product for which the question is posted
