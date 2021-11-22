@@ -28,5 +28,25 @@ module.exports = {
       .catch(err => {
         console.log('Answer posting error: ', err);
       })
+  },
+
+  helpful: (req, res) => {
+    models.answers.markHelpful(req.param.answer_id)
+      .then(() => {
+        res.status(204).send('Answer marked helpful.');
+      })
+      .catch(err => {
+        console.log('Answer-Helpful Error: ', err);
+      })
+  },
+
+  report: (req, res) => {
+    models.answers.reportAnswer(req.param.answer_id)
+      .then(() => {
+        res.status(204).send('Answer reported.');
+      })
+      .catch(err => {
+        console.log('Answer-Reported Error: ', err);
+      })
   }
 };

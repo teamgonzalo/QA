@@ -28,5 +28,13 @@ module.exports = {
       .catch(err => {
         console.log('Question posting error: ', err);
       })
+  },
+
+  helpful: (req, res) => {
+
+  },
+
+  report: (req, res) => {
+
   }
 }
