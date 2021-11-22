@@ -58,7 +58,6 @@ module.exports = {
       limit: count
     })
   },
-
   addQuestion: (product_id, body, name, email, date) => {
     return Questions.create({
       product_id: product_id,

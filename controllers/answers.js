@@ -31,9 +31,9 @@ module.exports = {
   },
 
   helpful: (req, res) => {
-    models.answers.markHelpful(req.param.answer_id)
+    models.answers.markHelpful(req.params.answer_id)
       .then(() => {
-        res.status(204).send('Answer marked helpful.');
+        res.sendStatus(204);
       })
       .catch(err => {
         console.log('Answer-Helpful Error: ', err);
@@ -41,9 +41,9 @@ module.exports = {
   },
 
   report: (req, res) => {
-    models.answers.reportAnswer(req.param.answer_id)
+    models.answers.reportAnswer(req.params.answer_id)
       .then(() => {
-        res.status(204).send('Answer reported.');
+        res.sendStatus(204);
       })
       .catch(err => {
         console.log('Answer-Reported Error: ', err);

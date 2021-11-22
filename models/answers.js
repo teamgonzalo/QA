@@ -64,7 +64,6 @@ module.exports = {
       limit: count
     })
   },
-
   addAnswers: (question_id, body, name, email, date, photos) => {
     return Answers.create({
       question_id: question_id,
@@ -75,6 +74,46 @@ module.exports = {
       photos: photos,
       reported: 0,
       helpful: 0
+    })
+  },
+  markHelpful: (answer_id) => {
+    return Answers.findOne({
+      where: {
+        id: answer_id
+      }
+    })
+    .then(data => {
+      let helpful = data.helpful
+
+      return Answers.update(
+        {helpful: helpful + 1},
+        {where : {
+          id: answer_id
+        }}
+      )
+    })
+    .catch(err => {
+      console.log('Mark Answer Helpful Error: ', err);
+    })
+  },
+  reportAnswer: (answer_id) => {
+    return Answers.findOne({
+      where: {
+        id: answer_id
+      }
+    })
+    .then(data => {
+      let reported = data.reported
+
+      return Answers.update(
+        {reported: reported + 1},
+        {where : {
+          id: answer_id
+        }}
+      )
+    })
+    .catch(err => {
+      console.log('Report Answer Error: ', err);
     })
   }
 };
