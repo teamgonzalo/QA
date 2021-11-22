@@ -18,7 +18,6 @@ module.exports = {
         console.log('Get Answers Error: ', err);
       })
   },
-
   post: (req, res) => {
     let date = new Date().getTime();
     models.answers.addAnswers(req.params.question_id, req.body.body, req.body.name, req.body.email, date, req.body.photos)
@@ -29,7 +28,6 @@ module.exports = {
         console.log('Answer posting error: ', err);
       })
   },
-
   helpful: (req, res) => {
     models.answers.markHelpful(req.params.answer_id)
       .then(() => {
@@ -39,7 +37,6 @@ module.exports = {
         console.log('Answer-Helpful Error: ', err);
       })
   },
-
   report: (req, res) => {
     models.answers.reportAnswer(req.params.answer_id)
       .then(() => {

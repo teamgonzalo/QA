@@ -68,5 +68,45 @@ module.exports = {
       reported: 0,
       helpful: 0
     })
+  },
+  markHelpful: (question_id) => {
+    return Questions.findOne({
+      where: {
+        id: question_id
+      }
+    })
+    .then(data => {
+      let helpful = data.helpful
+
+      return Questions.update(
+        {helpful: helpful + 1},
+        {where : {
+          id: question_id
+        }}
+      )
+    })
+    .catch(err => {
+      console.log('Mark Question Helpful Error: ', err);
+    })
+  },
+  reportQuestion: (question_id) => {
+    return Questions.findOne({
+      where: {
+        id: question_id
+      }
+    })
+    .then(data => {
+      let reported = data.reported
+
+      return Questions.update(
+        {reported: reported + 1},
+        {where : {
+          id: question_id
+        }}
+      )
+    })
+    .catch(err => {
+      console.log('Report Question Error: ', err);
+    })
   }
 }

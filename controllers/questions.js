@@ -17,7 +17,6 @@ module.exports = {
         res.sendStatus(404)
       })
   },
-
   post: (req, res) => {
     // Create new date and convert to UNIX formatting
     let date = new Date().getTime();
@@ -29,12 +28,22 @@ module.exports = {
         console.log('Question posting error: ', err);
       })
   },
-
   helpful: (req, res) => {
-
+    models.questions.markHelpful(req.params.question_id)
+      .then(() => {
+        res.sendStatus(204);
+      })
+      .catch(err => {
+        console.log('Question-Helpful Error: ', err);
+      })
   },
-
   report: (req, res) => {
-
+    models.questions.reportQuestion(req.params.question_id)
+      .then(() => {
+        res.sendStatus(204);
+      })
+      .catch(err => {
+        console.log('Question-Reported Error: ', err);
+      })
   }
 }
