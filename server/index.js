@@ -24,4 +24,7 @@ db.sync().then(() => {
   app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
   });
-});
+})
+  .catch(err => {
+  console.log('DB sync error: ', err);
+  });
