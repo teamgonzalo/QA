@@ -33,6 +33,10 @@ CREATE TABLE IF NOT EXISTS photos (
     REFERENCES answers(id)
 );
 
+CREATE INDEX idx_product_question ON questions(product_id);
+CREATE INDEX idx_questionsID_answers ON answers(question_id);
+CREATE INDEX idx_answersID_photos ON photos(answer_id);
+
 COPY questions(id, product_id, body, date_written, asker_name, asker_email, reported, helpful)
 FROM '/Users/thomasrose/Hack Reactor/HRRFE6/SDC/QA/database/data/questions.csv'
 DELIMITER ','

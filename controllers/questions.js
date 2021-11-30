@@ -2,12 +2,12 @@ const models = require('../models');
 
 module.exports = {
   get: (req, res) => {
-    let page = req.body.page || 1;
-    let count = req.body.count || 5;
-    models.questions.getQuestions(req.body.product_id, page, count)
+    let page = req.query.page || 1;
+    let count = req.query.count || 5;
+    models.questions.getQuestions(req.query.product_id, page, count)
       .then(data => {
         let response = {
-          product_id: req.body.product_id,
+          product_id: req.query.product_id,
           results: data
         }
         res.send(response);
