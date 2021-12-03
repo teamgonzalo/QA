@@ -1,16 +1,16 @@
 # Retail Application's Q&A RESTful API with PostgreSQL Database
 
 ## Table of Contents
-1. [Overview & Goals](#overview-&-goals)
+1. [Overview](#overview)
 2. [Technologies](#technologies)
 3. [Installation](#installation)
 4. [Schema](#schema)
 5. [API Endpoints](#endpoints)
-6. [Contributors](#contributors)
+6. [Contributor](#contributor)
 
-## Overview & Goals
+## Overview
 Managed database and API servicing retail application's Questions & Answers section.<br>
-The intention with this project was to replace the retail application's existing back-end with an optimized version to handle increased traffic load.
+The goal of this project was to replace the retail application's existing back-end with an optimized version to handle increased traffic load.
 
 ## Technologies
 * Node v14.17.5
